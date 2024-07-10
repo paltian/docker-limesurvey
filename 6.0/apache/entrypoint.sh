@@ -127,7 +127,7 @@ return array(
       'showScriptName' => $SHOW_SCRIPT_NAME,
     ),
     'request' => array(
-        baseUrl => empty( '$BASE_URL' ) ? null : '$BASE_URL'
+        'baseUrl' => empty( '$BASE_URL' ) ? null : '$BASE_URL'
      ),
   ),
   'config'=>array(
