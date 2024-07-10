@@ -41,6 +41,7 @@ ADMIN_EMAIL=${ADMIN_EMAIL:-'foobar@example.com'}
 file_env 'ADMIN_PASSWORD'
 
 BASE_URL=${BASE_URL:-}
+BASE_URL_ASSIGNMENT=${BASE_URL_ASSIGNMENT:-}
 PUBLIC_URL=${PUBLIC_URL:-}
 URL_FORMAT=${URL_FORMAT:-'path'}
 SHOW_SCRIPT_NAME=${SHOW_SCRIPT_NAME:-'true'}
@@ -99,13 +100,13 @@ else
         DB_CONNECT='host'
     fi
 
-    if [ -z "$PUBLIC_URL" ]; then
+    if [ -n "$PUBLIC_URL" ]; then
         echo 'Info: Setting publicurl=' $PUBLIC_URL
     fi
 
-    if [ -z "$BASE_URL" ]; then
+    if [ -n "$BASE_URL" ]; then
         echo 'Info: Setting baseUrl=' $BASE_URL
-        BASE_URL_ASSIGN="baseURL => $BASE_URL"
+        BASE_URL_ASSIGNMENT="baseURL => $BASE_URL"
     fi
 
 
@@ -132,7 +133,7 @@ return array(
       'showScriptName' => $SHOW_SCRIPT_NAME,
     ),
     'request' => array(
-        $BASE_URL_ASSIGN,
+        $BASE_URL_ASSIGNMENT,
      ),
   ),
   'config'=>array(
